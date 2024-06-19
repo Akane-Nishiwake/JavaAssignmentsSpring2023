@@ -43,7 +43,7 @@ public class AssignmentMenthods {
     }
     static int AVG(int[] num)//function that uses the Sum function then divided by array length
     {
-        int avg = 0;
+        int avg;
         avg = SUM(num)/num.length;
         return avg;
     }
@@ -186,7 +186,7 @@ public class AssignmentMenthods {
         //grab user input
         Scanner userInput = new Scanner(System.in);
 
-        String year = "";
+        String year;
         while(true)
         {
             System.out.print("Enter year between 2001 and 2010 inclusively: ");
@@ -198,7 +198,7 @@ public class AssignmentMenthods {
                 System.out.println("Please try again.");
         }
 
-        String gender = "";
+        String gender;
         while(true) {
             System.out.print("Enter gender: ");
             gender = userInput.next();

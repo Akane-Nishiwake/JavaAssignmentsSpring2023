@@ -42,6 +42,9 @@ public class Main {
                     break;
                 case 8:
                     break;
+                case 9:
+                    System.out.println("Closing Program.");
+                    break;
                 default:
                     System.out.println("Please try again.");
                     break;
