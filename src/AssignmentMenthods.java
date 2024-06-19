@@ -30,7 +30,7 @@ public class AssignmentMenthods {
         System.out.println("The three numbers are: " + numInput[0] + ", " + numInput[1] + ", and " +numInput[2]);
         System.out.println("The sum of the numbers is: " + SUM(numInput));
         System.out.println("The average of the numbers is: " + AVG(numInput));
-        userInput.close(); //closing the scanner to not leak memory
+       // userInput.close(); //closing the scanner to not leak memory
 
     }
     static int SUM(int[] num) //function that adds all the numbers in the array together
@@ -136,7 +136,7 @@ public class AssignmentMenthods {
             System.out.printf("\n%.3f"+"%-21c"+"%-22.2f%-22.2f",rate,'%', monthlyPayment, totalPayment);
             rate += 0.125f;// 1/8 increment
         }
-        userInput.close();
+        //userInput.close();
     }
 
 
@@ -210,7 +210,7 @@ public class AssignmentMenthods {
 
         System.out.print("Enter name: ");
         String name = userInput.next() + " ";
-        userInput.close();
+        //userInput.close();
         //get the file
         File myFile = new File("Babynamesranking" + year + ".txt");
         int rank = 1;
