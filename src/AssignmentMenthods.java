@@ -61,7 +61,7 @@ public class AssignmentMenthods {
         }
 
         //output to console
-        System.out.println("Starting Poulation: " + yearArray[0]);
+        System.out.println("Starting Population: " + yearArray[0]);
         System.out.println("Population Year One: " + yearArray[1]);
         System.out.println("Population Year Two: " + yearArray[2]);
         System.out.println("Population Year Three: " + yearArray[3]);
@@ -223,7 +223,7 @@ public class AssignmentMenthods {
     }
 
     static void Assignment06() {
-        int id = 0;
+        int id;
         int choice;
         double balance;
         boolean check = true;
@@ -273,9 +273,9 @@ public class AssignmentMenthods {
         }
     }
     static int validate(Scanner userInput, boolean check) {
-        int newid = -1;
+        int newid;
         while (check) {
-            System.out.println("Please enter an Account Number: ");
+            System.out.println("Please enter an Account Number between 1 and 10: ");
             newid = userInput.nextInt();
             if (newid < 0 || newid >= 10) {
                 System.out.println("Invalid Account Number. Please try again.\n");

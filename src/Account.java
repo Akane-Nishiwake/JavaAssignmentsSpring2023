@@ -1,10 +1,14 @@
 public class Account {
         private int id;
         private double balance;
-        public Account(int id, double balance)
+        public Account(int _id, double _balance)
         {
-            this.id = id; //initializes  id
-            this.balance = balance;//initializes balance
+            id = _id; //initializes  id
+            balance = _balance;//initializes balance
+        }
+        public int getId()
+        {
+            return id;
         }
         public double getBalance()
         {
