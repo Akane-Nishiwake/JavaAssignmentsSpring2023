@@ -37,6 +37,7 @@ public class Main {
                     AssignmentMenthods.Assignment05();
                     break;
                 case 6:
+                    AssignmentMenthods.Assignment06();
                     break;
                 case 7:
                     break;
