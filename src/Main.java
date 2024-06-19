@@ -43,6 +43,7 @@ public class Main {
                     AssignmentMenthods.Assignment07();
                     break;
                 case 8:
+                    AssignmentMenthods.Assignment08();
                     break;
                 case 9:
                     System.out.println("Closing Program.");

@@ -1,6 +1,6 @@
 
 import java.util.Scanner;
-import java.io.File;
+import java.io.*;
 import java.io.FileNotFoundException;
 
 
@@ -308,6 +308,136 @@ public class AssignmentMenthods {
             rose.doWinter();
         }
     }
+
+    static void Assignment08()
+    {
+        int choice;
+        int double_age = 99; // age is set so user can do choice 3 regardless
+        boolean check = true;
+        Scanner userInput = new Scanner(System.in);
+        while(check)//loop menu until exit is chosen
+        {
+            System.out.println("Main menu\n");
+            System.out.println("1: Repeat name.");
+            System.out.println("2: Double your age.");
+            System.out.println("3: Are you a teenager?");
+            System.out.println("4: Triangle.");
+            System.out.println("5: Exit");
+            System.out.print("\n#3 will use the doubled age from #2. \nIf you did not do #2 the default age is 99.");
+            System.out.print("\n\nEnter a choice: ");
+            choice = userInput.nextInt();
+            switch (choice) //calls the specific method attached to the menu option
+            {
+                case 1:
+                    printName(userInput);
+                    break;
+                case 2:
+                    double_age = printAge( double_age, userInput, check);
+                    break;
+                case 3:
+                    isTeenager(double_age);
+                    break;
+                case 4:
+                    try {
+                        triangleDisplay(userInput, check);
+                    } catch (FileNotFoundException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    break;
+                case 5:
+                    // exit the program
+                    System.out.println("\nThank you. Goodbye!");
+                    check = false;
+                    break;
+                default:
+                    //if the user chooses a number that is not a choice it will flag as invalid
+                    System.out.println("\nInvalid choice. Please try again.");
+                    break;
+            }
+        }
+
+    }
+    static void printName(Scanner userInput)
+    {
+        String name;
+        System.out.println("Please enter your name: ");
+        name = userInput.next();//grab the string that is the username, no validation attached
+        for(int i = 0; i < 20; i++)
+        {
+            System.out.println(name);
+        }
+    }
+    static int printAge(int double_age, Scanner userInput, boolean check)
+    {
+        int age;
+        System.out.println("Please enter your age: ");
+        age = validateAge(userInput,check); //grabs initial age from the user
+        System.out.println("Your current age is " + age);
+        double_age = age * 2;
+        System.out.println("Your age doubled is " + double_age);
+        return double_age; //returns the doubled age to be used in option 3
+    }
+    static void isTeenager(int age)
+    {
+        System.out.println("You are currently " + age + " years old.");
+        if(age != 99)//if the age is not 99 or the default age
+            System.out.println("Since you are not 99 years old you are a teenager.");
+        else//all other ages
+            System.out.println("Since you are 99 years old, you are NOT a teenager.");
+    }
+    static void triangleDisplay(Scanner userInput, boolean check) throws FileNotFoundException
+    {
+        int num = validateTriangle(userInput,check); //asks and validates input
+        FileWriter writer;//file writer object creation
+        try {
+            writer = new FileWriter("triangle.txt");//create and select file to write to
+            for(int i = 0; i < num; i++)//each row of the triangle
+            {
+                for(int j = 0; j <= i; j++)//each X of the triangle
+                {
+                    System.out.print("X");//output to console
+                    writer.write("X");//write to file
+                }
+                System.out.println();//next line
+                writer.write("\n");//next line
+
+            }
+            writer.close();//close the file
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    static int validateAge(Scanner userInput, boolean check)
+    {
+        int age;
+        while(check)//while the age is out of bounds ask the user for the age
+        {
+            System.out.println("Please enter a age between 0 and 112: ");
+            age = userInput.nextInt();
+            if(age <= 0 || age >= 112)
+                System.out.println("Invalid Age. Please try again.\n");
+            else
+                return age;//returns validated age
+        }
+        return 0;
+    }
+    static int validateTriangle(Scanner userInput, boolean check)
+    {
+        int tri;
+        while(check)//while the number is out of bounds ask the user for an number
+        {
+            System.out.println("Please enter a number between 3 and 50: ");
+            tri = userInput.nextInt();
+            if(tri < 3 || tri > 50)
+                System.out.println("Invalid Number. Please try again.\n");
+            else
+                return tri;//returns validated number
+        }
+        return 0;
+    }
+
 }
 
 
