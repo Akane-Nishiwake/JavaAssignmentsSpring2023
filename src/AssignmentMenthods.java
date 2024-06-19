@@ -185,22 +185,34 @@ public class AssignmentMenthods {
         String numberBorn = "";
         //grab user input
         Scanner userInput = new Scanner(System.in);
-        System.out.print("Enter year: ");
-        String year = userInput.next();
 
-        System.out.print("Enter gender: ");
-        String gender = userInput.next();
+        String year = "";
+        while(true)
+        {
+            System.out.print("Enter year between 2001 and 2010 inclusively: ");
+            year = userInput.next();
+            int intYear = Integer.parseInt(year);
+            if(intYear >= 2001 && intYear <= 2010 )
+              break;
+            else
+                System.out.println("Please try again.");
+        }
 
-        System.out.print("Enter name, this is case sensitive so please write the name with the first letter capitalized: ");
-        String name = userInput.next();
+        String gender = "";
+        while(true) {
+            System.out.print("Enter gender: ");
+            gender = userInput.next();
+            if(gender.equalsIgnoreCase("M") || gender.equalsIgnoreCase("F"))
+                break;
+            else
+                System.out.println("Please try again.");
+        }
+
+        System.out.print("Enter name: ");
+        String name = userInput.next() + " ";
         userInput.close();
         //get the file
         File myFile = new File("Babynamesranking" + year + ".txt");
-        if(!myFile.exists())//if the file doesn't exist
-        {
-            System.out.println("No record for " + year);
-            System.exit(1);
-        }
         int rank = 1;
         try {
             Scanner read = new Scanner(myFile); //read the file
@@ -209,15 +221,15 @@ public class AssignmentMenthods {
                 String line = read.nextLine();//current line of the file
                 String[] temp = line.split("\t");//current line data ignoring the tab
 
-                if (gender.equalsIgnoreCase("M") && temp[0].contains(name))//baby boy
+                if (gender.equalsIgnoreCase("M") && temp[1].equalsIgnoreCase(name))//baby boy
                 {
-                    numberBorn = temp[1];//number of births associated
+                    numberBorn = temp[2];//number of births associated
                     break;
                 }
 
-                else if (gender.equalsIgnoreCase("F") && temp[2].contains(name))//baby girl
+                else if (gender.equalsIgnoreCase("F") && temp[3].equalsIgnoreCase(name))//baby girl
                 {
-                    numberBorn = temp[3];
+                    numberBorn = temp[4];
                     break;
                 }
                 else if (rank >= 1000)//if rank goes past the last line of the file
@@ -233,9 +245,9 @@ public class AssignmentMenthods {
             excep.printStackTrace();
         }
         if(rank == 0)//if the name was not found
-            System.out.println("The name "+ name +" is not ranked in year " + year);
+            System.out.println("The name "+ name +"is not ranked in year " + year);
         else//display info if the name was found
-            System.out.println(name + " is ranked #" + rank + " in year "+ year + " with " + numberBorn + " babies born.");
+            System.out.println(name + "is ranked #" + rank + " in year "+ year + " with " + numberBorn + " " + gender +" babies born.");
     }
 
 }
