@@ -40,6 +40,7 @@ public class Main {
                     AssignmentMenthods.Assignment06();
                     break;
                 case 7:
+                    AssignmentMenthods.Assignment07();
                     break;
                 case 8:
                     break;

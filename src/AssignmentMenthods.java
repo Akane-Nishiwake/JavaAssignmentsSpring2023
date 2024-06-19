@@ -286,6 +286,28 @@ public class AssignmentMenthods {
         return 0;
     }
 
+    static void Assignment07()
+    {
+        System.out.println("Creating a maple tree, tulip, and rose...");
+        MapleTree mapleTree = new MapleTree();
+        Tulip tulip = new Tulip();
+        Rose rose = new Rose(); //created Rose object to use methods
+        System.out.println("Entering a loop to simulate 3 years");
+        for (int i = 0; i < 3; i++) {
+            mapleTree.doSpring();
+            tulip.doSpring();
+            rose.doSpring();
+            mapleTree.doSummer();
+            tulip.doSummer();
+            rose.doSummer();
+            mapleTree.doFall();
+            tulip.doFall();
+            rose.doFall();
+            mapleTree.doWinter();
+            tulip.doWinter();
+            rose.doWinter();
+        }
+    }
 }
 
 
